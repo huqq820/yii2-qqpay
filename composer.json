@@ -13,7 +13,6 @@
             "email": "379602459@qq.com"
         }
     ],
-    "minimum-stability": "dev",
 	"autoload":{
 		"psr-4":{
 			"huqq820\\yii2-qqpay\\":"src/"
