@@ -1,0 +1,22 @@
+{
+    "name": "huqq820/yii2-qqpay",
+    "description": "Yii2 qqpay extension",
+    "type": "yii2-extension",
+	"keywords": ["yii2","qqpay"],
+    "require": {
+        "yiisoft/yii2": "*"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "huqq820",
+            "email": "379602459@qq.com"
+        }
+    ],
+    "minimum-stability": "dev",
+	"autoload":{
+		"psr-4":{
+			"huqq820\\yii2-qqpay\\":"src/"
+		}
+	}
+}
