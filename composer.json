@@ -1,6 +1,7 @@
 {
     "name": "huqq/yii2-qqpay",
     "type": "library",
+	"description": "Yii2 QQpay extension",
     "require": {
         "yiisoft/yii2": "*"
     },
