@@ -2,6 +2,7 @@
     "name": "huqq/yii2-qqpay",
     "type": "library",
 	"description": "Yii2 QQpay extension",
+	"keywords": ["yii2","qqpay"],
     "require": {
         "yiisoft/yii2": "*"
     },
@@ -17,7 +18,7 @@
     ],
 	"autoload": {
         "psr-4": {
-            "huqq\\yii2-qqpay\\": "src/"
+            "huqq\\qqpay\\": "src/"
         }
     }
 }
