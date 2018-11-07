@@ -14,7 +14,7 @@
             "name": "huqq820",
             "email": "379602459@qq.com"
         }
-    ]
+    ],
 	"autoload": {
         "psr-4": {
             "huqq\\yii2-qqpay\\": "src/"
