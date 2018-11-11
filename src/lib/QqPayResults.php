@@ -1,4 +1,5 @@
 <?php
+namespace huqq\qqpay\lib;
 /**
  *
  * 接口调用结果类

@@ -1,4 +1,5 @@
 <?php
+namespace huqq\qqpay\lib;
 /**
  *
  * 接口访问类，包含所有微信支付API列表的封装，类中方法为static方法，
@@ -41,11 +42,11 @@ class QqPayApi
 
         //异步通知url未设置，则使用配置文件中的url
         if(!$inputObj->IsNotify_urlSet()){
-            $inputObj->SetNotify_url(QqPayConfig::NOTIFY_URL);//异步通知url
+            $inputObj->SetNotify_url(QqPayConfig::NOTIFY_URL());//异步通知url
         }
 
-        $inputObj->SetAppid(QqPayConfig::APPID);//公众账号ID
-        $inputObj->SetMch_id(QqPayConfig::MCHID);//商户号
+        $inputObj->SetAppid(QqPayConfig::APPID());//公众账号ID
+        $inputObj->SetMch_id(QqPayConfig::MCHID());//商户号
         $inputObj->SetSpbill_create_ip(self::getIp());//终端ip
         $inputObj->SetNonce_str(self::getNonceStr());//随机字符串
 
@@ -78,8 +79,8 @@ class QqPayApi
         if(!$inputObj->IsOut_trade_noSet() && !$inputObj->IsTransaction_idSet()) {
             throw new QqPayException("订单查询接口中，out_trade_no、transaction_id至少填一个！");
         }
-        $inputObj->SetAppid(QqPayConfig::APPID);//公众账号ID
-        $inputObj->SetMch_id(QqPayConfig::MCHID);//商户号
+        $inputObj->SetAppid(QqPayConfig::APPID());//公众账号ID
+        $inputObj->SetMch_id(QqPayConfig::MCHID());//商户号
         $inputObj->SetNonce_str(self::getNonceStr());//随机字符串
 
         $inputObj->SetSign();//签名
@@ -109,8 +110,8 @@ class QqPayApi
         if(!$inputObj->IsOut_trade_noSet()) {
             throw new QqPayException("订单查询接口中，out_trade_no必填！");
         }
-        $inputObj->SetAppid(QqPayConfig::APPID);//公众账号ID
-        $inputObj->SetMch_id(QqPayConfig::MCHID);//商户号
+        $inputObj->SetAppid(QqPayConfig::APPID());//公众账号ID
+        $inputObj->SetMch_id(QqPayConfig::MCHID());//商户号
         $inputObj->SetNonce_str(self::getNonceStr());//随机字符串
 
         $inputObj->SetSign();//签名
@@ -149,8 +150,8 @@ class QqPayApi
         }else if(!$inputObj->IsOp_user_idSet()){
             throw new QqPayException("退款申请接口中，缺少必填参数op_user_id！");
         }
-        $inputObj->SetAppid(QqPayConfig::APPID);//公众账号ID
-        $inputObj->SetMch_id(QqPayConfig::MCHID);//商户号
+        $inputObj->SetAppid(QqPayConfig::APPID());//公众账号ID
+        $inputObj->SetMch_id(QqPayConfig::MCHID());//商户号
         $inputObj->SetNonce_str(self::getNonceStr());//随机字符串
 
         $inputObj->SetSign();//签名
@@ -185,8 +186,8 @@ class QqPayApi
             !$inputObj->IsRefund_idSet()) {
                 throw new QqPayException("退款查询接口中，out_refund_no、out_trade_no、transaction_id、refund_id四个参数必填一个！");
             }
-            $inputObj->SetAppid(QqPayConfig::APPID);//公众账号ID
-            $inputObj->SetMch_id(QqPayConfig::MCHID);//商户号
+            $inputObj->SetAppid(QqPayConfig::APPID());//公众账号ID
+            $inputObj->SetMch_id(QqPayConfig::MCHID());//商户号
             $inputObj->SetNonce_str(self::getNonceStr());//随机字符串
 
             $inputObj->SetSign();//签名
@@ -215,8 +216,8 @@ class QqPayApi
         if(!$inputObj->IsBill_dateSet()) {
             throw new QqPayException("对账单接口中，缺少必填参数bill_date！");
         }
-        $inputObj->SetAppid(QqPayConfig::APPID);//公众账号ID
-        $inputObj->SetMch_id(QqPayConfig::MCHID);//商户号
+        $inputObj->SetAppid(QqPayConfig::APPID());//公众账号ID
+        $inputObj->SetMch_id(QqPayConfig::MCHID());//商户号
         $inputObj->SetNonce_str(self::getNonceStr());//随机字符串
 
         $inputObj->SetSign();//签名
@@ -253,8 +254,8 @@ class QqPayApi
         }
 
         $inputObj->SetSpbill_create_ip($_SERVER['REMOTE_ADDR']);//终端ip
-        $inputObj->SetAppid(QqPayConfig::APPID);//公众账号ID
-        $inputObj->SetMch_id(QqPayConfig::MCHID);//商户号
+        $inputObj->SetAppid(QqPayConfig::APPID());//公众账号ID
+        $inputObj->SetMch_id(QqPayConfig::MCHID());//商户号
         $inputObj->SetNonce_str(self::getNonceStr());//随机字符串
 
         $inputObj->SetSign();//签名
@@ -284,8 +285,8 @@ class QqPayApi
             throw new QqPayException("撤销订单API接口中，参数out_trade_no和transaction_id必须填写一个！");
         }
 
-        $inputObj->SetAppid(QqPayConfig::APPID);//公众账号ID
-        $inputObj->SetMch_id(QqPayConfig::MCHID);//商户号
+        $inputObj->SetAppid(QqPayConfig::APPID());//公众账号ID
+        $inputObj->SetMch_id(QqPayConfig::MCHID());//商户号
         $inputObj->SetNonce_str(self::getNonceStr());//随机字符串
 
         $inputObj->SetSign();//签名
@@ -324,8 +325,8 @@ class QqPayApi
         } if(!$inputObj->IsExecute_time_Set()) {
             throw new QqPayException("接口耗时，缺少必填参数execute_time_！");
         }
-        $inputObj->SetAppid(QqPayConfig::APPID);//公众账号ID
-        $inputObj->SetMch_id(QqPayConfig::MCHID);//商户号
+        $inputObj->SetAppid(QqPayConfig::APPID());//公众账号ID
+        $inputObj->SetMch_id(QqPayConfig::MCHID());//商户号
         $inputObj->SetUser_ip($_SERVER['REMOTE_ADDR']);//终端ip
         $inputObj->SetTime(date("YmdHis"));//商户上报时间
         $inputObj->SetNonce_str(self::getNonceStr());//随机字符串
@@ -353,8 +354,8 @@ class QqPayApi
             throw new QqPayException("生成二维码，缺少必填参数product_id！");
         }
 
-        $inputObj->SetAppid(QqPayConfig::APPID);//公众账号ID
-        $inputObj->SetMch_id(QqPayConfig::MCHID);//商户号
+        $inputObj->SetAppid(QqPayConfig::APPID());//公众账号ID
+        $inputObj->SetMch_id(QqPayConfig::MCHID());//商户号
         $inputObj->SetTime_stamp(time());//时间戳
         $inputObj->SetNonce_str(self::getNonceStr());//随机字符串
 
@@ -381,8 +382,8 @@ class QqPayApi
         if(!$inputObj->IsLong_urlSet()) {
             throw new QqPayException("需要转换的URL，签名用原串，传输需URL encode！");
         }
-        $inputObj->SetAppid(QqPayConfig::APPID);//公众账号ID
-        $inputObj->SetMch_id(QqPayConfig::MCHID);//商户号
+        $inputObj->SetAppid(QqPayConfig::APPID());//公众账号ID
+        $inputObj->SetMch_id(QqPayConfig::MCHID());//商户号
         $inputObj->SetNonce_str(self::getNonceStr());//随机字符串
 
         $inputObj->SetSign();//签名
@@ -454,11 +455,11 @@ class QqPayApi
     private static function reportCostTime($url, $startTimeStamp, $data)
     {
         //如果不需要上报数据
-        if(QqPayConfig::REPORT_LEVENL == 0){
+        if(QqPayConfig::REPORT_LEVENL() == 0){
             return;
         }
         //如果仅失败上报
-        if(QqPayConfig::REPORT_LEVENL == 1 &&
+        if(QqPayConfig::REPORT_LEVENL() == 1 &&
             array_key_exists("return_code", $data) &&
             $data["return_code"] == "SUCCESS" &&
             array_key_exists("result_code", $data) &&
@@ -524,10 +525,10 @@ class QqPayApi
         curl_setopt($ch, CURLOPT_TIMEOUT, $second);
 
         //如果有配置代理这里就设置代理
-        if(QqPayConfig::CURL_PROXY_HOST != "0.0.0.0"
+        if(QqPayConfig::CURL_PROXY_HOST() != "0.0.0.0"
             && QqPayConfig::CURL_PROXY_PORT != 0){
-                curl_setopt($ch,CURLOPT_PROXY, QqPayConfig::CURL_PROXY_HOST);
-                curl_setopt($ch,CURLOPT_PROXYPORT, QqPayConfig::CURL_PROXY_PORT);
+                curl_setopt($ch,CURLOPT_PROXY, QqPayConfig::CURL_PROXY_HOST());
+                curl_setopt($ch,CURLOPT_PROXYPORT, QqPayConfig::CURL_PROXY_PORT());
         }
         curl_setopt($ch,CURLOPT_URL, $url);
         //curl_setopt($ch,CURLOPT_SSL_VERIFYPEER,TRUE);
@@ -544,9 +545,9 @@ class QqPayApi
             //设置证书
             //使用证书：cert 与 key 分别属于两个.pem文件
             curl_setopt($ch,CURLOPT_SSLCERTTYPE,'PEM');
-            curl_setopt($ch,CURLOPT_SSLCERT, dirname(__FILE__) . '/' . QqPayConfig::SSLCERT_PATH);
+            curl_setopt($ch,CURLOPT_SSLCERT, dirname(__FILE__) . '/' . QqPayConfig::SSLCERT_PATH());
             curl_setopt($ch,CURLOPT_SSLKEYTYPE,'PEM');
-            curl_setopt($ch,CURLOPT_SSLKEY, dirname(__FILE__) . '/' . QqPayConfig::SSLKEY_PATH);
+            curl_setopt($ch,CURLOPT_SSLKEY, dirname(__FILE__) . '/' . QqPayConfig::SSLKEY_PATH());
         }
         //post提交方式
         curl_setopt($ch, CURLOPT_POST, TRUE);

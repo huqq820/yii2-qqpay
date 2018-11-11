@@ -1,11 +1,12 @@
 <?php
+namespace huqq\qqpay\lib;
 /**
  *
  * 支付API异常类
  * @author widyhu
  *
  */
-class QqPayException extends Exception {
+class QqPayException extends \Exception {
     public function errorMessage()
     {
         return $this->getMessage();

@@ -1,4 +1,5 @@
 <?php
+namespace huqq\qqpay\lib;
 /**
  *
  * 统一下单输入对象

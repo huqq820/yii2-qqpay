@@ -1,4 +1,5 @@
 <?php
+namespace huqq\qqpay\lib;
 /**
  *
  * 订单查询输入对象

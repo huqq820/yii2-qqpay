@@ -1,4 +1,5 @@
 <?php
+namespace huqq\qqpay\lib;
 /**
  *
  * 数据对象基础类，该类中定义数据类最基本的行为，包括：
@@ -108,7 +109,7 @@ class QqPayDataBase
         ksort($this->values);
         $string = $this->ToUrlParams();
         //签名步骤二：在string后加入KEY
-        $string = $string . "&key=".QqPayConfig::KEY;
+        $string = $string . "&key=".QqPayConfig::KEY();
         //签名步骤三：MD5加密
         $string = md5($string);
         //签名步骤四：所有字符转为大写

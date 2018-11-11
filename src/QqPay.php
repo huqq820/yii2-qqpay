@@ -3,6 +3,9 @@ namespace huqq\qqpay;
 use yii\base\Component;
 use yii\base\Exception;
 use yii\base\InvalidConfigException;
+use huqq\qqpay\lib\QqPayConfig;
+use huqq\qqpay\lib\QqPayUnifiedOrder;
+use huqq\qqpay\lib\QqPayApi;
 
 /**
  * 入口文件
@@ -39,7 +42,7 @@ class QqPay extends Component
         if (!isset($this->notify_url)) {
             throw new InvalidConfigException('请先配置使用的notify_url');
         }
-        \QqPayConfig::$qqpay = $this;
+        QqPayConfig::$qqpay = $this;
     }
     
     /**
@@ -52,7 +55,7 @@ class QqPay extends Component
     {
         $time_start = date("YmdHis");
         //创建请求数据对象
-        $input = new \QqPayUnifiedOrder();
+        $input = new QqPayUnifiedOrder();
         $input->SetBody($request['body']);  //商品描述
         $input->SetOut_trade_no($request['out_trade_no']);  //商户订单号
         $input->SetTotal_fee($request['total_fee']);  //金额(分)
@@ -64,8 +67,7 @@ class QqPay extends Component
         $input->SetFee_type("CNY");
     
         //发送统一下单请求到商户平台
-        $result = \QqPayApi::unifiedOrder($input);
-    
+        $result = QqPayApi::unifiedOrder($input);
         //发起支付失败
         if($result['result_code'] != 'SUCCESS'){
             return array();
@@ -74,8 +76,8 @@ class QqPay extends Component
         //拼接返回给APP的支付参数
         $response = array(
             'result_code' => $result['result_code'],
-            'app_id' => \QqPayConfig::APPID,
-            'mch_id' => \QqPayConfig::MCHID,
+            'app_id' => QqPayConfig::APPID(),
+            'mch_id' => QqPayConfig::MCHID(),
             'prepay_id' => $result['prepay_id'],
             'sign' => $result['sign'],
             'nonce_str' => $result['nonce_str'],
@@ -83,4 +85,5 @@ class QqPay extends Component
         );
         return $response;
     }
+    
 }

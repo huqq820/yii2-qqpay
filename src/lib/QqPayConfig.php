@@ -1,4 +1,5 @@
 <?php
+namespace huqq\qqpay\lib;
 /**
  * 	配置账号信息
  */
