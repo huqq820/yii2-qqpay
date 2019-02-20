@@ -1,7 +1,6 @@
 <?php
 namespace huqq\qqpay;
 use yii\base\Component;
-use yii\base\Exception;
 use yii\base\InvalidConfigException;
 use huqq\qqpay\lib\QqPayConfig;
 use huqq\qqpay\lib\QqPayUnifiedOrder;
@@ -72,18 +71,7 @@ class QqPay extends Component
         if($result['result_code'] != 'SUCCESS'){
             return array();
         }
-    
-        //拼接返回给APP的支付参数
-        $response = array(
-            'result_code' => $result['result_code'],
-            'app_id' => QqPayConfig::APPID(),
-            'mch_id' => QqPayConfig::MCHID(),
-            'prepay_id' => $result['prepay_id'],
-            'sign' => $result['sign'],
-            'nonce_str' => $result['nonce_str'],
-            'time_start' => $time_start,
-        );
-        return $response;
+        return $result;
     }
     
 }
