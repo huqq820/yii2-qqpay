@@ -15,6 +15,7 @@ class QqPay extends Component
     public $app_id;
     public $mch_id;
     public $key;
+    public $app_key;
     public $app_secret;
     public $ssl_cert_path;
     public $ssl_key_path;
@@ -34,6 +35,9 @@ class QqPay extends Component
         }
         if (!isset($this->key)) {
             throw new InvalidConfigException('请先配置key');
+        }
+        if (!isset($this->app_key)) {
+            throw new InvalidConfigException('请先配置app_key');
         }
         if (!isset($this->app_secret)) {
             throw new InvalidConfigException('请先配置app_secret');

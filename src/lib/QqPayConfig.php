@@ -17,6 +17,8 @@ class QqPayConfig
     *
     * KEY：商户支付密钥，参考开户邮件设置（必须配置，登录商户平台自行设置）
     * 设置地址：https://pay.weixin.qq.com/index.php/account/api_cert
+    * 
+    * APPKEY： 应用APP_KEY
     *
     * APPSECRET：公众帐号secert（仅JSAPI支付的时候需要配置， 登录公众平台，进入开发者中心可设置），
     * 获取地址：https://mp.weixin.qq.com/advanced/advanced?action=dev&t=advanced/dev&token=2005451881&lang=zh_CN
@@ -25,6 +27,7 @@ class QqPayConfig
     const APPID = '';
     const MCHID = '';
     const KEY = '';
+    const APPKEY = '';
     const APPSECRET = '';
 
     //=======【证书路径设置】=====================================
@@ -75,6 +78,11 @@ class QqPayConfig
     public static function KEY()
     {
         return static::$qqpay->key;
+    }
+    
+    public static function APPKEY()
+    {
+        return static::$qqpay->app_key;
     }
     
     public static function APPSECRET()
