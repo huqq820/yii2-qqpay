@@ -72,7 +72,7 @@ class QqPayResults extends QqPayDataBase
         $obj = new self();
         $obj->FromXml($xml);
         //fix bug 2015-06-29
-        if($obj->values['return_code'] != 'SUCCESS'){
+        if(!empty($obj->values['return_code']) && $obj->values['return_code'] != 'SUCCESS'){
             return $obj->GetValues();
         }
         $obj->CheckSign();
