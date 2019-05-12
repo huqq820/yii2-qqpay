@@ -74,7 +74,7 @@ class QqPayApi
      */
     public static function orderQuery($inputObj, $timeOut = 6)
     {
-        $url = "https://api.mch.weixin.qq.com/pay/orderquery";
+        $url = "https://qpay.qq.com/cgi-bin/pay/qpay_order_query.cgi";
         //检测必填参数
         if(!$inputObj->IsOut_trade_noSet() && !$inputObj->IsTransaction_idSet()) {
             throw new QqPayException("订单查询接口中，out_trade_no、transaction_id至少填一个！");
@@ -105,7 +105,7 @@ class QqPayApi
      */
     public static function closeOrder($inputObj, $timeOut = 6)
     {
-        $url = "https://api.mch.weixin.qq.com/pay/closeorder";
+        $url = "https://qpay.qq.com/cgi-bin/pay/qpay_close_order.cgi";
         //检测必填参数
         if(!$inputObj->IsOut_trade_noSet()) {
             throw new QqPayException("订单查询接口中，out_trade_no必填！");
@@ -137,7 +137,7 @@ class QqPayApi
      */
     public static function refund($inputObj, $timeOut = 6)
     {
-        $url = "https://api.mch.weixin.qq.com/secapi/pay/refund";
+        $url = "https://api.qpay.qq.com/cgi-bin/pay/qpay_refund.cgi";
         //检测必填参数
         if(!$inputObj->IsOut_trade_noSet() && !$inputObj->IsTransaction_idSet()) {
             throw new QqPayException("退款申请接口中，out_trade_no、transaction_id至少填一个！");
@@ -178,7 +178,7 @@ class QqPayApi
      */
     public static function refundQuery($inputObj, $timeOut = 6)
     {
-        $url = "https://api.mch.weixin.qq.com/pay/refundquery";
+        $url = "https://qpay.qq.com/cgi-bin/pay/qpay_refund_query.cgi";
         //检测必填参数
         if(!$inputObj->IsOut_refund_noSet() &&
             !$inputObj->IsOut_trade_noSet() &&
@@ -211,7 +211,7 @@ class QqPayApi
      */
     public static function downloadBill($inputObj, $timeOut = 6)
     {
-        $url = "https://api.mch.weixin.qq.com/pay/downloadbill";
+        $url = "https://qpay.qq.com/cgi-bin/sp_download/qpay_mch_statement_down.cgi";
         //检测必填参数
         if(!$inputObj->IsBill_dateSet()) {
             throw new QqPayException("对账单接口中，缺少必填参数bill_date！");

@@ -22,7 +22,7 @@ class QqPay extends Component
     public $notify_url;
     public $curl_proxy_host = '0.0.0.0';
     public $curl_proxy_port = 0;
-    public $report_level = 1;
+    public $report_level = 0;
     
     public function init()
     {

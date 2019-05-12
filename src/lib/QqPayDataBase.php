@@ -109,7 +109,8 @@ class QqPayDataBase
         ksort($this->values);
         $string = $this->ToUrlParams();
         //签名步骤二：在string后加入KEY
-        $string = $string . "&key=".QqPayConfig::KEY();
+        //$string = $string . "&key=".QqPayConfig::KEY();
+        $string = $string . "&key=" . \Yii::$app->qqpay->key;
         //签名步骤三：MD5加密
         $string = md5($string);
         //签名步骤四：所有字符转为大写
